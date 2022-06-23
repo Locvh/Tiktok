@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faCake,
   faCircleXmark,
+  faLocationArrow,
   faMagnifyingGlass,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
@@ -12,7 +14,7 @@ import Tippy from "@tippyjs/react//headless";
 import "tippy.js/dist/tippy.css"; // optional
 import { Wrapper as PopperWrapper } from "~/Components/Propper";
 import AccountItem from "~/Components/AccountItem";
-
+import Button from "~/Components/Button";
 const cx = classNames.bind(styles);
 
 function Header() {
@@ -36,10 +38,10 @@ function Header() {
             <div className={cx("search-result")} tabIndex="-1" {...attrs}>
               <PopperWrapper>
                 <h4 className={cx("search-title")}>Accounts</h4>
-                <AccountItem/>
-                <AccountItem/>
-                <AccountItem/>
-                <AccountItem/>
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
+                <AccountItem />
               </PopperWrapper>
             </div>
           )}
@@ -61,7 +63,15 @@ function Header() {
             </button>
           </div>
         </Tippy>
-        <div className={cx("action")}></div>
+        <div className={cx("action")}>
+          {/* onClick vẫn hoạt động khi click */}
+          {/* Href link qua trang bên ngoài  */}
+          {/* To Link trong trang nội bộ  */}
+          {/* <Button rightIcon={<FontAwesomeIcon icon={faLocationArrow}></FontAwesomeIcon>} primary to="/login" href="https://fullstack.edu.vn/" onClick={()=> alert("hello")}>Log in</Button> */}
+          {/* <Button primary>Log in</Button> */}
+          <Button text>Upload</Button>
+          <Button rounded className={cx('custom-login')} >Log in</Button>
+        </div>
       </div>
     </header>
   );

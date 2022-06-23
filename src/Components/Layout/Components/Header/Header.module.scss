@@ -62,7 +62,6 @@
     top: var(--search-top-spacer);
     right: var(--search-button-width);
   }
-
 }
 
 .search-title {
@@ -95,4 +94,8 @@
   &:active {
     background-color: rgba(22, 24, 35, 0.06);
   }
+}
+
+.custom-login {
+  color: blue;
 }
