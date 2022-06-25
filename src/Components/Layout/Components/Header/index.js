@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCake,
+  faCircleQuestion,
   faCircleXmark,
-  faLocationArrow,
+  faEarthAsia,
+  faEllipsisVertical,
+  faKeyboard,
   faMagnifyingGlass,
   faSpinner,
 } from "@fortawesome/free-solid-svg-icons";
@@ -15,9 +17,26 @@ import "tippy.js/dist/tippy.css"; // optional
 import { Wrapper as PopperWrapper } from "~/Components/Propper";
 import AccountItem from "~/Components/AccountItem";
 import Button from "~/Components/Button";
+import Menu from "~/Components/Propper/Menu";
 const cx = classNames.bind(styles);
 
 function Header() {
+  const MENU_ICON = [
+    {
+      icon: <FontAwesomeIcon icon={faEarthAsia} />,
+      title: "English",
+    },
+    {
+      icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+      title: "Feedback and help",
+      to: "/feedback",
+    },
+    {
+      icon: <FontAwesomeIcon icon={faKeyboard} />,
+      title: "keyboard shortcut",
+    },
+  ];
+
   const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
@@ -70,7 +89,14 @@ function Header() {
           {/* <Button rightIcon={<FontAwesomeIcon icon={faLocationArrow}></FontAwesomeIcon>} primary to="/login" href="https://fullstack.edu.vn/" onClick={()=> alert("hello")}>Log in</Button> */}
           {/* <Button primary>Log in</Button> */}
           <Button text>Upload</Button>
-          <Button rounded className={cx('custom-login')} >Log in</Button>
+          <Button rounded className={cx("custom-login")}>
+            Log in
+          </Button>
+          <Menu items={MENU_ICON}>
+            <button className={cx("more-button")}>
+              <FontAwesomeIcon icon={faEllipsisVertical} />
+            </button>
+          </Menu>
         </div>
       </div>
     </header>
