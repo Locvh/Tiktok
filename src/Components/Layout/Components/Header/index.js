@@ -25,6 +25,21 @@ function Header() {
     {
       icon: <FontAwesomeIcon icon={faEarthAsia} />,
       title: "English",
+      children: {
+        title: "Language",
+        data: [
+          {
+            code: "en",
+            title: "English",
+            type: "Languge",
+          },
+          {
+            code: "vn",
+            title: "Tieng Viet",
+            type: "Languge",
+          },
+        ],
+      },
     },
     {
       icon: <FontAwesomeIcon icon={faCircleQuestion} />,
@@ -37,6 +52,14 @@ function Header() {
     },
   ];
 
+  const handleMenuChange = (MenuItem) => {
+    switch(MenuItem.type){
+      case 'Languge':
+        // Handle change Languge
+        break;
+      default:
+    }
+  };
   const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
@@ -89,10 +112,8 @@ function Header() {
           {/* <Button rightIcon={<FontAwesomeIcon icon={faLocationArrow}></FontAwesomeIcon>} primary to="/login" href="https://fullstack.edu.vn/" onClick={()=> alert("hello")}>Log in</Button> */}
           {/* <Button primary>Log in</Button> */}
           <Button text>Upload</Button>
-          <Button rounded className={cx("custom-login")}>
-            Log in
-          </Button>
-          <Menu items={MENU_ICON}>
+          <Button primary>Log in</Button>
+          <Menu items={MENU_ICON} onChange={handleMenuChange}>
             <button className={cx("more-button")}>
               <FontAwesomeIcon icon={faEllipsisVertical} />
             </button>
