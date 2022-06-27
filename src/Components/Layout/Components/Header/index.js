@@ -4,18 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleQuestion,
   faCircleXmark,
-  faCloudUpload,
   faCoins,
   faEarthAsia,
   faEllipsisVertical,
   faGear,
   faKeyboard,
   faMagnifyingGlass,
-  faMessage,
-  faPerson,
   faSignOut,
   faSpinner,
-  faUpload,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames/bind";
@@ -28,6 +24,8 @@ import { Wrapper as PopperWrapper } from "~/Components/Propper";
 import AccountItem from "~/Components/AccountItem";
 import Button from "~/Components/Button";
 import Menu from "~/Components/Propper/Menu";
+import { UploadIcon } from "~/Components/Icons";
+import Image from "~/Components/Image";
 
 const cx = classNames.bind(styles);
 
@@ -103,7 +101,7 @@ function Header() {
       icon: <FontAwesomeIcon icon={faSignOut} />,
       title: "Log out",
       to: "/logout",
-      separate:true
+      separate: true,
     },
   ];
   return (
@@ -149,7 +147,7 @@ function Header() {
             <>
               <Tippy delay={[0, 200]} content="Upload video" placement="bottom">
                 <button className={cx("action-btn")}>
-                  <FontAwesomeIcon icon={faCloudUpload} />
+                  <UploadIcon />
                 </button>
               </Tippy>
             </>
@@ -169,8 +167,9 @@ function Header() {
             onChange={handleMenuChange}
           >
             {currentUser ? (
-              <img
-                src="https://2.bp.blogspot.com/-sUOMYoXfNbk/VkB5ptrT4-I/AAAAAAAAT80/JPOfvtWSDwU/s1600/coloawap.net.0_1.jpg"
+              <Image
+                // src="https://2.bp.blogspot.com/-sUOMYoXfNbk/VkB5ptrT4-I/AAAAAAAAT80/JPOfvtWSDwU/s1600/coloawap.net.0_1.jpg"
+                src="asds"
                 className={cx("user-avartar")}
                 alt="nguyen vane A"
               />
