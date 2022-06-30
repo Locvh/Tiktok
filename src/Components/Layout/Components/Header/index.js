@@ -1,36 +1,29 @@
-import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleQuestion,
-  faCircleXmark,
   faCoins,
   faEarthAsia,
   faEllipsisVertical,
   faGear,
   faKeyboard,
-  faMagnifyingGlass,
   faSignOut,
-  faSpinner,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames/bind";
 import { images } from "~/asset/images";
 import Tippy from "@tippyjs/react";
-import HeadLeassTippy from "@tippyjs/react//headless";
 import "tippy.js/dist/tippy.css"; // optional
 
-import { Wrapper as PopperWrapper } from "~/Components/Propper";
-import AccountItem from "~/Components/AccountItem";
 import Button from "~/Components/Button";
 import Menu from "~/Components/Propper/Menu";
 import { UploadIcon } from "~/Components/Icons";
 import Image from "~/Components/Image";
+import Search from "../Search";
 
 const cx = classNames.bind(styles);
 
 function Header() {
-  const [searchResult, setSearchResult] = useState([]);
 
   const currentUser = true;
 
@@ -74,11 +67,6 @@ function Header() {
     }
   };
 
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([]);
-    }, 0);
-  }, []);
 
   const USER_MENU = [
     {
@@ -109,38 +97,7 @@ function Header() {
       <div className={cx("inner")}>
         <img src={images.logo} alt="Tiktok" />
 
-        <HeadLeassTippy
-          interactive
-          visible={searchResult.length > 0}
-          render={(attrs) => (
-            <div className={cx("search-result")} tabIndex="-1" {...attrs}>
-              <PopperWrapper>
-                <h4 className={cx("search-title")}>Accounts</h4>
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-                <AccountItem />
-              </PopperWrapper>
-            </div>
-          )}
-        >
-          <div className={cx("search")}>
-            <input placeholder="Search account and video" spellCheck={false} />
-            <button className={cx("clear-btn")}>
-              <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
-            </button>
-            <FontAwesomeIcon
-              className={cx("loading")}
-              icon={faSpinner}
-            ></FontAwesomeIcon>
-            {/* Loading */}
-            {/* <Tippy content="Tìm kiếm" placement="right"> */}
-
-            <button className={cx("search-btn")}>
-              <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
-            </button>
-          </div>
-        </HeadLeassTippy>
+       <Search/>
 
         <div className={cx("actions")}>
           {currentUser ? (
@@ -168,8 +125,7 @@ function Header() {
           >
             {currentUser ? (
               <Image
-                // src="https://2.bp.blogspot.com/-sUOMYoXfNbk/VkB5ptrT4-I/AAAAAAAAT80/JPOfvtWSDwU/s1600/coloawap.net.0_1.jpg"
-                src="asds"
+                src="https://2.bp.blogspot.com/-sUOMYoXfNbk/VkB5ptrT4-I/AAAAAAAAT80/JPOfvtWSDwU/s1600/coloawap.net.0_1.jpg"
                 className={cx("user-avartar")}
                 alt="nguyen vane A"
               />
