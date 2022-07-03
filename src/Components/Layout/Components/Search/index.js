@@ -11,6 +11,7 @@ import HeadLeassTippy from "@tippyjs/react//headless";
 import "tippy.js/dist/tippy.css"; // optional
 import { Wrapper as PopperWrapper } from "~/Components/Propper";
 import AccountItem from "~/Components/AccountItem";
+import { useDebounce } from "~/hook";
 
 const cx = classNames.bind(styles);
 function Search() {
@@ -19,10 +20,16 @@ function Search() {
   const [showResult, setShowResult] = useState(true);
   const [showLoading, setShowLoading] = useState(false);
 
+  // cách chạy 
+  // lần 1 mới chạy nó đưa vào chuỗi rỗng ' ' 
+  // lần 2 nếu nhập kí tự ' h '
+  const debounced = useDebounce(searchValues, 500);
+
+
   const currentRef = useRef();
 
   useEffect(() => {
-    if (!searchValues.trim()) {
+    if (!debounced.trim()) {
       setSearchResult([]);
       return;
     }
@@ -30,7 +37,7 @@ function Search() {
     setShowLoading(true);
     fetch(
       `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        searchValues
+        debounced
       )}&type=more`
     )
       .then((res) => res.json())
@@ -38,7 +45,7 @@ function Search() {
         setSearchResult(res.data);
         setShowLoading(false);
       });
-  }, [searchValues]);
+  }, [debounced]);
 
   const handleClear = () => {
     setSearchValues("");

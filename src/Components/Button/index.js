@@ -25,7 +25,7 @@ function Button({
 
   const props = {
     onClick,
-    ...passprops,
+    // ...passprops,
   };
 
   if (disable) {
