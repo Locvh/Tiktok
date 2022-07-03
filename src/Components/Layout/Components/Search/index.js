@@ -12,6 +12,8 @@ import "tippy.js/dist/tippy.css"; // optional
 import { Wrapper as PopperWrapper } from "~/Components/Propper";
 import AccountItem from "~/Components/AccountItem";
 import { useDebounce } from "~/hook";
+// import axios from "axios";
+import * as searchService from '~/api-service/searchService'
 
 const cx = classNames.bind(styles);
 function Search() {
@@ -20,11 +22,10 @@ function Search() {
   const [showResult, setShowResult] = useState(true);
   const [showLoading, setShowLoading] = useState(false);
 
-  // cách chạy 
-  // lần 1 mới chạy nó đưa vào chuỗi rỗng ' ' 
+  // cách chạy
+  // lần 1 mới chạy nó đưa vào chuỗi rỗng ' '
   // lần 2 nếu nhập kí tự ' h '
   const debounced = useDebounce(searchValues, 500);
-
 
   const currentRef = useRef();
 
@@ -33,18 +34,16 @@ function Search() {
       setSearchResult([]);
       return;
     }
+    // setShowLoading(true);
 
-    setShowLoading(true);
-    fetch(
-      `https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(
-        debounced
-      )}&type=more`
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResult(res.data);
-        setShowLoading(false);
-      });
+    const fetchapi = async () =>{
+      setShowLoading(true);
+      const result = await searchService.searchService(debounced);
+      setSearchResult(result);
+      setShowLoading(false);
+    }
+
+    fetchapi();
   }, [debounced]);
 
   const handleClear = () => {
