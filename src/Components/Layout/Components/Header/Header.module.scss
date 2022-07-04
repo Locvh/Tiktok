@@ -20,7 +20,8 @@
   padding: 0 var(--default-layout-horizontal-space);
 }
 
-.logo {
+.logo-link {
+  display: flex;
 }
 
 .custom-login {

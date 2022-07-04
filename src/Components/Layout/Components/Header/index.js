@@ -14,7 +14,8 @@ import classNames from "classnames/bind";
 import { images } from "~/asset/images";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
-
+import { Link } from "react-router-dom";
+import routeConfig from '~/Config/route'
 import Button from "~/Components/Button";
 import Menu from "~/Components/Propper/Menu";
 import { UploadIcon } from "~/Components/Icons";
@@ -24,7 +25,6 @@ import Search from "../Search";
 const cx = classNames.bind(styles);
 
 function Header() {
-
   const currentUser = true;
 
   const MENU_ICON = [
@@ -67,7 +67,6 @@ function Header() {
     }
   };
 
-
   const USER_MENU = [
     {
       icon: <FontAwesomeIcon icon={faUser} />,
@@ -95,9 +94,8 @@ function Header() {
   return (
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
-        <img src={images.logo} alt="Tiktok" />
-
-       <Search/>
+        <Link to={routeConfig.home} className={cx('logo-link')}><img src={images.logo} alt="Tiktok" /></Link>
+        <Search />
 
         <div className={cx("actions")}>
           {currentUser ? (

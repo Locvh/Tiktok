@@ -13,7 +13,7 @@ import { Wrapper as PopperWrapper } from "~/Components/Propper";
 import AccountItem from "~/Components/AccountItem";
 import { useDebounce } from "~/hook";
 // import axios from "axios";
-import * as searchService from '~/api-service/searchService'
+import * as searchService from "~/api-service/searchService";
 
 const cx = classNames.bind(styles);
 function Search() {
@@ -36,12 +36,12 @@ function Search() {
     }
     // setShowLoading(true);
 
-    const fetchapi = async () =>{
+    const fetchapi = async () => {
       setShowLoading(true);
       const result = await searchService.searchService(debounced);
       setSearchResult(result);
       setShowLoading(false);
-    }
+    };
 
     fetchapi();
   }, [debounced]);
@@ -55,6 +55,14 @@ function Search() {
   const handHideResults = () => {
     setShowResult(false);
   };
+
+  const handleChange = (e) => {
+    const searchValue = e.target.value;
+    if (!searchValue.startsWith(" ")) {
+      setSearchValues(searchValue);
+    }
+  };
+
   return (
     <HeadLeassTippy
       interactive
@@ -77,7 +85,7 @@ function Search() {
           value={searchValues}
           placeholder="Search account and video"
           spellCheck={false}
-          onChange={(e) => setSearchValues(e.target.value)}
+          onChange={handleChange}
           onFocus={() => setShowResult(true)}
         />
 
@@ -96,7 +104,7 @@ function Search() {
         {/* Loading */}
         {/* <Tippy content="Tìm kiếm" placement="right"> */}
 
-        <button className={cx("search-btn")}>
+        <button className={cx("search-btn")} onMouseDown={(e)=>e.preventDefault()}>
           <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
         </button>
       </div>
