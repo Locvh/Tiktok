@@ -64,51 +64,58 @@ function Search() {
   };
 
   return (
-    <HeadLeassTippy
-      interactive
-      visible={showResult && searchResult.length > 0}
-      render={(attrs) => (
-        <div className={cx("search-result")} tabIndex="-1" {...attrs}>
-          <PopperWrapper>
-            <h4 className={cx("search-title")}>Accounts</h4>
-            {searchResult.map((result) => (
-              <AccountItem key={result.id} data={result} />
-            ))}
-          </PopperWrapper>
-        </div>
-      )}
-      onClickOutside={handHideResults}
-    >
-      <div className={cx("search")}>
-        <input
-          ref={currentRef}
-          value={searchValues}
-          placeholder="Search account and video"
-          spellCheck={false}
-          onChange={handleChange}
-          onFocus={() => setShowResult(true)}
-        />
-
-        {!!searchValues && !showLoading && (
-          <button className={cx("clear-btn")} onClick={handleClear}>
-            <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
+    // Using a wrapper <div> tag around the reference element solves 
+    // this by creating a new parentNode context. 
+    <div>
+      <HeadLeassTippy
+        interactive
+        visible={showResult && searchResult.length > 0}
+        render={(attrs) => (
+          <div className={cx("search-result")} tabIndex="-1" {...attrs}>
+            <PopperWrapper>
+              <h4 className={cx("search-title")}>Accounts</h4>
+              {searchResult.map((result) => (
+                <AccountItem key={result.id} data={result} />
+              ))}
+            </PopperWrapper>
+          </div>
+        )}
+        onClickOutside={handHideResults}
+      >
+        <div className={cx("search")}>
+          <input
+            ref={currentRef}
+            value={searchValues}
+            placeholder="Search account and video"
+            spellCheck={false}
+            onChange={handleChange}
+            onFocus={() => setShowResult(true)}
+          />
+  
+          {!!searchValues && !showLoading && (
+            <button className={cx("clear-btn")} onClick={handleClear}>
+              <FontAwesomeIcon icon={faCircleXmark}></FontAwesomeIcon>
+            </button>
+          )}
+          {showLoading && (
+            <FontAwesomeIcon
+              className={cx("loading")}
+              icon={faSpinner}
+            ></FontAwesomeIcon>
+          )}
+  
+          {/* Loading */}
+          {/* <Tippy content="Tìm kiếm" placement="right"> */}
+  
+          <button
+            className={cx("search-btn")}
+            onMouseDown={(e) => e.preventDefault()}
+          >
+            <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
           </button>
-        )}
-        {showLoading && (
-          <FontAwesomeIcon
-            className={cx("loading")}
-            icon={faSpinner}
-          ></FontAwesomeIcon>
-        )}
-
-        {/* Loading */}
-        {/* <Tippy content="Tìm kiếm" placement="right"> */}
-
-        <button className={cx("search-btn")} onMouseDown={(e)=>e.preventDefault()}>
-          <FontAwesomeIcon icon={faMagnifyingGlass}></FontAwesomeIcon>
-        </button>
-      </div>
-    </HeadLeassTippy>
+        </div>
+      </HeadLeassTippy>
+    </div>
   );
 }
 
