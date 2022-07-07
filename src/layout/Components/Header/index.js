@@ -15,11 +15,11 @@ import { images } from "~/asset/images";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css"; // optional
 import { Link } from "react-router-dom";
-import routeConfig from '~/Config/route'
-import Button from "~/Components/Button";
-import Menu from "~/Components/Propper/Menu";
-import { UploadIcon } from "~/Components/Icons";
-import Image from "~/Components/Image";
+import config from '~/config'
+import Button from "~/components/Button";
+import Menu from "~/components/Propper/Menu";
+import { UploadIcon } from "~/components/Icons";
+import Image from "~/components/Image";
 import Search from "../Search";
 
 const cx = classNames.bind(styles);
@@ -95,7 +95,7 @@ function Header() {
   return (
     <header className={cx("wrapper")}>
       <div className={cx("inner")}>
-        <Link to={routeConfig.home} className={cx('logo-link')}><img src={images.logo} alt="Tiktok" /></Link>
+        <Link to={config.routes.home} className={cx('logo-link')}><img src={images.logo} alt="Tiktok" /></Link>
         <Search />
 
         <div className={cx("actions")}>

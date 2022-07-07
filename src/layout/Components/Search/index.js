@@ -9,11 +9,11 @@ import {
 import classNames from "classnames/bind";
 import HeadLeassTippy from "@tippyjs/react//headless";
 import "tippy.js/dist/tippy.css"; // optional
-import { Wrapper as PopperWrapper } from "~/Components/Propper";
-import AccountItem from "~/Components/AccountItem";
+import { Wrapper as PopperWrapper } from "~/components/Propper";
+import AccountItem from "~/components/AccountItem";
 import { useDebounce } from "~/hook";
 // import axios from "axios";
-import * as searchService from "~/api-service/searchService";
+import * as searchService from "~/service/searchService";
 
 const cx = classNames.bind(styles);
 function Search() {

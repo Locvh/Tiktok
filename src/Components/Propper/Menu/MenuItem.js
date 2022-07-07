@@ -1,4 +1,4 @@
-import Button from "~/Components/Button";
+import Button from "~/components/Button";
 import styles from "./Menu.module.scss";
 import classNames from "classnames/bind";
 
