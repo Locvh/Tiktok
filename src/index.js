@@ -7,6 +7,8 @@ import GlobalStyles from "~/components/Globalstyles";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
+    {/* children truyền vào là 1 function */}
+    {/* VD như ở GlobalStyles thì children truyền vào là 1 func của App  */}
     <GlobalStyles>
       <App />
     </GlobalStyles>

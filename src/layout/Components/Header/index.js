@@ -37,12 +37,10 @@ function Header() {
           {
             code: "en",
             title: "English",
-            type: "Languge",
           },
           {
             code: "vn",
             title: "Tieng Viet",
-            type: "Languge",
           },
           
         ],
@@ -112,6 +110,9 @@ function Header() {
               {/* onClick vẫn hoạt động khi click */}
               {/* Href link qua trang bên ngoài  */}
               {/* To Link trong trang nội bộ  */}
+
+              {/* children truyền vào là 1 function */}
+              {/* VD như ở button thì children truyền vào là 1 func của FontAwesomeIcon  */}
               {/* <Button rightIcon={<FontAwesomeIcon icon={faLocationArrow}></FontAwesomeIcon>} primary to="/login" href="https://fullstack.edu.vn/" onClick={()=> alert("hello")}>Log in</Button> */}
               {/* <Button primary>Log in</Button> */}
               <Button text>Upload</Button>

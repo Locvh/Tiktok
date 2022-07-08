@@ -2,7 +2,7 @@ import styles from "./Menu.module.scss";
 import classNames from "classnames/bind";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-
+import PropTypes from 'prop-types';
 const cx = classNames.bind(styles);
 
 function HeaderMenu({ title, onBack }) {
@@ -14,6 +14,11 @@ function HeaderMenu({ title, onBack }) {
       <h4 className={cx("header-title")}>{title}</h4>
     </header>
   );
+}
+
+HeaderMenu.prototype={
+  title:PropTypes.string.isRequired,
+  onBack:PropTypes.func.isRequired
 }
 
 export default HeaderMenu;
